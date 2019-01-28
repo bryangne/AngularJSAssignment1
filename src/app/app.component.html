@@ -1,20 +1,53 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Angular Calculator Application
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<br>
+<h2>Addition</h2>
+<section>
+  <form #addForm="ngForm">
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="sum1" name="sumInput1" #sumInput1="ngModel"> + 
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="sum2" name="sumInput2" #sumInput2="ngModel">
+  <button type="submit" class="btn btn-default" [disabled]="!addForm.form.valid" (click)="calculateSum(); addForm.reset(); subForm.reset(); mulForm.reset(); divForm.reset()"> = </button>
+  <h3 [hidden]="!showSum">{{formula}}</h3>
+  <div [hidden]="sumInput1.valid || sumInput1.pristine">First value is not an integer.</div>
+  <div [hidden]="sumInput2.valid || sumInput2.pristine">Second value is not an integer.</div>
+  </form>
+</section>
+<br>
+<h2>Subtraction</h2>
+<section>
+  <form #subForm="ngForm">
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="diff1" name="diffInput1" #diffInput1="ngModel"> - 
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="diff2" name="diffInput2" #diffInput2="ngModel">
+  <button type="submit" class="btn btn-default" [disabled]="!subForm.form.valid" (click)="calculateDiff(); addForm.reset(); subForm.reset(); mulForm.reset(); divForm.reset()"> = </button>
+  <h3 [hidden]="!showDiff">{{formula}}</h3>
+  <div [hidden]="diffInput1.valid || diffInput1.pristine">First value is not an integer.</div>
+  <div [hidden]="diffInput2.valid || diffInput2.pristine">Second value is not an integer.</div>
+  </form>
+</section>
+<br>
+<h2>Multiplication</h2>
+<section>
+  <form #mulForm="ngForm">
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="prod1" name="prodInput1" #prodInput1="ngModel"> * 
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="prod2" name="prodInput2" #prodInput2="ngModel">
+  <button type="submit" class="btn btn-default" [disabled]="!mulForm.form.valid" (click)="calculateProd(); addForm.reset(); subForm.reset(); mulForm.reset(); divForm.reset()"> = </button>
+  <h3 [hidden]="!showProd">{{formula}}</h3>
+  <div [hidden]="prodInput1.valid || prodInput1.pristine">First value is not an integer.</div>
+  <div [hidden]="prodInput2.valid || prodInput2.pristine">Second value is not an integer.</div>
+  </form>
+</section>
+<h2>Division</h2>
+<section>
+  <form #divForm="ngForm">
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="quot1" name="quotInput1" #quotInput1="ngModel"> / 
+  <input type="text" pattern="[0-9]*" required [(ngModel)]="quot2" name="quotInput2" #quotInput2="ngModel">
+  <button type="submit" class="btn btn-default" [disabled]="!divForm.form.valid" (click)="calculateQuot(); addForm.reset(); subForm.reset(); mulForm.reset(); divForm.reset()"> = </button>
+  <h3 [hidden]="!showQuot">{{formula}}</h3>
+  <div [hidden]="quotInput1.valid || quotInput1.pristine">First value is not an integer.</div>
+  <div [hidden]="quotInput2.valid || quotInput2.pristine">Second value is not an integer.</div>
+  </form>
+</section>
